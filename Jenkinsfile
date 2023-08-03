@@ -1,11 +1,14 @@
 pipeline {
 	agent any
 
-	environment {
-		DOCKERHUB_CREDENTIALS=credentials('alfredrozay')
-	}
-
 	stages {
+
+        stage("Dockerhub credentials") {
+            steps{
+                DOCKERHUB_CREDENTIALS=credentials('alfredrozay')
+            }
+        }
+
 		stage("GitHub Checkout") {
 			steps {
 				git branch: 'main', url: 'https://github.com/alfredrozay1/troubleshooting-jenkins.git'
