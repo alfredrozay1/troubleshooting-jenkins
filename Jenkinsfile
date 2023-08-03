@@ -14,7 +14,7 @@ pipeline {
 
 		stage("Docker Build") {
 			steps {
-				sh "docker image build -t alfredrozay/alfred-things ."
+				sh 'docker image build -t alfredrozay/alfred-things .'
 			}
 		}
 
@@ -29,9 +29,9 @@ pipeline {
 		stage("Tag Image and Push to DockerHub") {
 			steps {
 				echo 'tagging...'
-				sh "docker tag alfredrozay/alfred-things docker.io/alfredrozay/alfred-new-app:$BUILD_ID"
+				sh 'docker tag alfredrozay/alfred-things docker.io/alfredrozay/alfred-new-app:$BUILD_ID'
 				echo 'pushing...'
-				sh "docker push docker.io/alfredrozay/alfred-new-app:$BUILD_ID"
+				sh 'docker push docker.io/alfredrozay/alfred-new-app:$BUILD_ID'
 			}
 		}
 
